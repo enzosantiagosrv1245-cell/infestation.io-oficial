@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Infestation.io</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            background-color: #000;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #loginScreen {
+            position: absolute;
+            top:0; left:0;
+            width:100vw; height:100vh;
+            background-color:#111;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            color:white;
+        }
+        #loginScreen h1 {
+            font-size:50px;
+            margin-bottom:30px;
+        }
+        #nameInput {
+            padding:15px 20px;
+            font-size:20px;
+            border-radius:10px;
+            border:none;
+            margin-bottom:20px;
+            outline:none;
+        }
+        #playBtn {
+            padding:20px 40px;
+            font-size:28px;
+            border:none;
+            border-radius:12px;
+            cursor:pointer;
+            background-color:#28a745;
+            color:white;
+            transition:0.2s;
+        }
+        #playBtn:hover { background-color:#1e7e34; }
+
+        #googleLoginBtn {
+            margin-top:20px;
+            padding:15px 30px;
+            font-size:22px;
+            border:none;
+            border-radius:12px;
+            background-color:#4285F4;
+            color:white;
+            cursor:pointer;
+            transition:0.2s;
+        }
+        #googleLoginBtn:hover { background-color:#357ae8; }
+
+        #gameCanvas {
+            display:none;
+            position:absolute;
+            top:0;
+            left:0;
+            background-color:#000;
+        }
+
+        #chatInput {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginScreen">
+        <h1>Infestation.io</h1>
+        <input type="text" id="nameInput" placeholder="Digite seu nome">
+        <button id="playBtn">Jogar</button>
+        <button id="googleLoginBtn">Login com Google</button>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+    <input type="text" id="chatInput" placeholder="Digite sua mensagem">
+
+    <!-- Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Game JS -->
+    <script src="game.js"></script>
+
+    <script>
+        const nameInput = document.getElementById('nameInput');
+        const playBtn = document.getElementById('playBtn');
+        const loginScreen = document.getElementById('loginScreen');
+        const gameCanvas = document.getElementById('gameCanvas');
+
+        playBtn.onclick = () => {
+            const name = nameInput.value.trim();
+            if(!name){
+                alert('Digite seu nome antes de jogar!');
+                return;
+            }
+            // Setar o nome no game.js
+            myName = name;
+            googleUserInfo = { name: name, email: 'local@player.com' }; // email fictício local
+            loginScreen.style.display='none';
+            gameCanvas.style.display='block';
+            chatInput.style.display='block';
+            connectSocketWithAuth();
+        }
+    </script>
+</body>
+</html>

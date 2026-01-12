@@ -1,0 +1,19 @@
+{
+  "name": "infestation-game",
+  "version": "1.0.0",
+  "description": "Meu jogo multiplayer online",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "google-auth-library": "^10.2.1",
+    "socket.io": "^4.7.5"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
