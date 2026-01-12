@@ -242,13 +242,12 @@ canvas.addEventListener('mousedown',(e)=>{
     const me = gameState.players[myId];
     if(!me) return;
 
-    if(isMenuOpen){
-        // menu is handled via DOM overlay, ignore canvas clicks while open
-        return;
-    }
-    }else{
-        socket.emit('playerAction',{type:'primary_action'});
-    }
+        if(isMenuOpen){
+            // menu is handled via DOM overlay, ignore canvas clicks while open
+            return;
+        } else {
+            socket.emit('playerAction',{type:'primary_action'});
+        }
 });
 
 function isClickInside(pos,rect){ return pos.x>rect.x && pos.x<rect.x+rect.width && pos.y>rect.y && pos.y<rect.y+rect.height; }
