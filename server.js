@@ -129,6 +129,8 @@ function initializeGame() {
         gamePhase: 'waiting',
         startTime: 60,
         timeLeft: ROUND_DURATION,
+        worldWidth: WORLD_WIDTH,
+        worldHeight: WORLD_HEIGHT,
         skateboard: { x: 0, y: 0, width: SKATEBOARD_WIDTH, height: SKATEBOARD_HEIGHT, spawned: false, ownerId: null },
         // boxes, furniture, ducts, sunshades, house, garage...
     };

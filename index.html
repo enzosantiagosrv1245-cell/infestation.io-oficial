@@ -45,18 +45,7 @@
         }
         #playBtn:hover { background-color:#1e7e34; }
 
-        #googleLoginBtn {
-            margin-top:20px;
-            padding:15px 30px;
-            font-size:22px;
-            border:none;
-            border-radius:12px;
-            background-color:#4285F4;
-            color:white;
-            cursor:pointer;
-            transition:0.2s;
-        }
-        #googleLoginBtn:hover { background-color:#357ae8; }
+        /* Google login removed */
 
         #gameCanvas {
             display:none;
@@ -76,34 +65,25 @@
         <h1>Infestation.io</h1>
         <input type="text" id="nameInput" placeholder="Digite seu nome">
         <button id="playBtn">Jogar</button>
-        <button id="googleLoginBtn">Login com Google</button>
     </div>
 
     <canvas id="gameCanvas"></canvas>
     <input type="text" id="chatInput" placeholder="Digite sua mensagem">
 
-    <!-- Google Sign-In -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- Socket.IO -->
     <script src="/socket.io/socket.io.js"></script>
     <!-- Game JS -->
     <script src="game.js"></script>
 
     <script>
-        const nameInput = document.getElementById('nameInput');
-        const playBtn = document.getElementById('playBtn');
-        const loginScreen = document.getElementById('loginScreen');
-        const gameCanvas = document.getElementById('gameCanvas');
-
         playBtn.onclick = () => {
             const name = nameInput.value.trim();
             if(!name){
                 alert('Digite seu nome antes de jogar!');
                 return;
             }
-            // Setar o nome no game.js
             myName = name;
-            googleUserInfo = { name: name, email: 'local@player.com' }; // email fictício local
+            googleUserInfo = { name: name, email: 'local@player.com' };
             loginScreen.style.display='none';
             gameCanvas.style.display='block';
             chatInput.style.display='block';
